@@ -82,3 +82,27 @@ function arraySet(array, value, idx) {
   arrayCopy[idx] = value;
   return arrayCopy;
 }
+
+// objectSet() 구현
+function objectSet(obj, key, value) {
+  const copy = obj.assign({}, obj);
+  copy[key] = value;
+  return copy;
+}
+
+// 제품 가격을 설정하는 setPrice() 리팩토링
+function setPrice(item, newPrice) {
+  return objectSet(item, "price", newPrice);
+}
+
+// 제품 개수를 설정하는 setQuantity() 리팩토링
+function setQuantity(item, newQuantity) {
+  return objectSet(item, "quantity", newQuantity);
+}
+
+// 객체의 키로 키/값 쌍을 지우는 delete 연산 카피-온-라이트 버전으로 만들기
+function objectDelete(obj, key) {
+  const copy = obj.assign({}, obj);
+  delete copy[key];
+  return copy;
+}
